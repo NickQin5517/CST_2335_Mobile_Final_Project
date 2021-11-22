@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
@@ -41,7 +42,7 @@ public class WordListFragment extends Fragment {
 
     RecyclerView wordList;
     ArrayList<Word> resultsWords = new ArrayList<>();
-    ArrayList<Word> favouriteWords = new ArrayList<>();
+
     MyChatAdapter theAdapter = new MyChatAdapter();
 
     Word thisWord ;
@@ -109,8 +110,8 @@ public class WordListFragment extends Fragment {
 
                 JSONObject theDocument = new JSONObject( text );
                 JSONArray definitionsArray = theDocument.getJSONArray("definitions");
-                JSONObject position0 = definitionsArray.getJSONObject(0);
-                definition = position0.getString("definition");
+  //              JSONObject position0 = definitionsArray.getJSONObject(0);
+  //              definition = position0.getString("definition");
                 word = theDocument.getString("word");
                 pronunciation = theDocument.getString("pronunciation");
 
@@ -118,11 +119,24 @@ public class WordListFragment extends Fragment {
 
                     wordList.setAdapter(theAdapter);
                     wordList.setLayoutManager(new LinearLayoutManager(getContext()));
+                    resultsWords.clear();
+                    for(int i = 0; i<definitionsArray.length(); i++){
 
-                    resultsWords.remove(thisWord);
-                    thisWord = new Word(word,"//" + pronunciation + "//",definition);
+                        try {
+                            JSONObject position0 = definitionsArray.getJSONObject(i);
+                            definition = position0.getString("definition");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
-                    resultsWords.add(thisWord);
+                        thisWord = new Word(word,"//" + pronunciation + "//",definition);
+                        resultsWords.add(thisWord);
+
+                    }
+
+ //                   resultsWords.remove(thisWord);
+ //                   thisWord = new Word(word,"//" + pronunciation + "//",definition);
+//                    resultsWords.add(thisWord);
 
                     theAdapter.notifyItemInserted( resultsWords.size()-1 );
 
@@ -217,9 +231,9 @@ public class WordListFragment extends Fragment {
         @Override
         public void onBindViewHolder( MyRowViews holder, int position) {
 
-            holder.wordNameText.setText(thisWord.getWordName());
-            holder.pronunciationText.setText(thisWord.getPronunciationview());
-            holder.wordDefinitionText.setText(thisWord.getWordDefinition());
+            holder.wordNameText.setText(resultsWords.get(position).getWordName());
+            holder.pronunciationText.setText(resultsWords.get(position).getPronunciationview());
+            holder.wordDefinitionText.setText(resultsWords.get(position).getWordDefinition());
 
         }
 

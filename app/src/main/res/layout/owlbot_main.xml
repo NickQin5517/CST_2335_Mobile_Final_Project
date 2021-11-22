@@ -9,10 +9,10 @@
 
     <TextView
         android:id="@+id/titleView"
-        android:layout_width="265dp"
-        android:layout_height="53dp"
+        android:layout_width="346dp"
+        android:layout_height="50dp"
         android:layout_marginTop="104dp"
-        android:text="owlbot_dictionary"
+        android:text="@string/owlbot_dictionary"
         android:textColor="#F31919"
         android:textSize="34sp"
         android:textStyle="bold|italic"
@@ -26,7 +26,7 @@
         android:layout_width="208dp"
         android:layout_height="35dp"
         android:layout_marginTop="132dp"
-        android:text="Search your word"
+        android:text="@string/search_your_word"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -35,7 +35,7 @@
 
     <EditText
         android:id="@+id/searchedit"
-        android:hint="Type your word"
+        android:hint="@string/type_your_word"
         android:layout_width="342dp"
         android:layout_height="54dp"
         android:layout_marginTop="36dp"
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
-        android:text="search"
+        android:text="@string/search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchedit" />
@@ -60,9 +60,40 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="40dp"
-        android:text="FAVOURITESWORD"
+        android:text="@string/favouritesword"
 
         app:layout_constraintBottom_toTopOf="@+id/titleView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/author_ning_qin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="56dp"
+        android:text="@string/version_1_0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleView" />
+
+    <Button
+        android:id="@+id/helpbutton"
+        android:layout_width="61dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="128dp"
+        android:text="@string/help"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

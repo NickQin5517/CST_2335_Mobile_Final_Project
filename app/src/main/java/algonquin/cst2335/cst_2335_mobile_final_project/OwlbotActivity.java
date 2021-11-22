@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class OwlbotActivity extends AppCompatActivity {
@@ -45,6 +46,19 @@ public class OwlbotActivity extends AppCompatActivity {
 
             Intent nextPage = new Intent(OwlbotActivity.this, FavouritesList.class);
             startActivity(nextPage);
+
+        });
+
+        Button helpbtn = findViewById(R.id.helpbutton);
+        helpbtn.setOnClickListener( click -> {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder( this);
+            builder.setMessage("1. Please enter the word that you want to search in the search bar.\n"+
+                    "2. You can click the each words displayed in the result page to see the details including pronunciation and definition.\n "+
+                    "3. You can click \"ADD\" button to add the word to favourite's word list.")
+                    .setTitle("Help Instructions")
+                    .setNegativeButton("CLOSE", (dislog, cl) -> {}).create().show();;
+
 
         });
 

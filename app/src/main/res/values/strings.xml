@@ -1,10 +1,23 @@
 <resources>
     <string name="app_name">CST_2335_Mobile_Final_Project</string>
-    <string name="owlbot_dictionary" />
-    <string name="search_your_word" />
-    <string name="search" />
+
+
     <string name="searchbar" />
     <string name="wordnameview" />
     <string name="worddefinitionview" />
     <string name="pronunciationview" />
+    <string name="word_name_goes_here">Word name goes here</string>
+    <string name="pronunciation_goes_here">pronunciation goes here</string>
+    <string name="definition_goes_here">definition goes here</string>
+    <string name="add">ADD</string>
+    <string name="close">CLOSE</string>
+    <string name="delete">DELETE</string>
+    <string name="search">search</string>
+    <string name="owlbot_dictionary">owlbot_dictionary</string>
+    <string name="search_your_word">Search your word</string>
+    <string name="type_your_word">Type your word</string>
+    <string name="favouritesword">FAVOURITESWORD</string>
+    <string name="author_ning_qin">Author: Ning Qin</string>
+    <string name="version_1_0">Version: 1.0</string>
+    <string name="help">HELP</string>
 </resources>

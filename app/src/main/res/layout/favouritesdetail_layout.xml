@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="Word name goes here"
+        android:text="@string/word_name_goes_here"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,16 +21,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="pronunciation goes here"
+        android:text="@string/pronunciation_goes_here"
         app:layout_constraintStart_toStartOf="@+id/detailsWordName"
         app:layout_constraintTop_toBottomOf="@+id/detailsWordName" />
 
     <TextView
         android:id="@+id/detailsWordDefinition"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="definition goes here"
+        android:text="@string/definition_goes_here"
         app:layout_constraintStart_toStartOf="@+id/detailsWordPro"
         app:layout_constraintTop_toBottomOf="@+id/detailsWordPro" />
 
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="32dp"
-        android:text="DELETE"
+        android:text="@string/delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:text="CLOSE"
+        android:text="@string/close"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

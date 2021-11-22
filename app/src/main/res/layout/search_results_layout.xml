@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="search"
+        android:text="@string/search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toEndOf="@+id/searchedittwo"
@@ -31,8 +31,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myrecycler"
-        android:layout_width="368dp"
-        android:layout_height="551dp"
+        android:layout_width="365dp"
+        android:layout_height="424dp"
         android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

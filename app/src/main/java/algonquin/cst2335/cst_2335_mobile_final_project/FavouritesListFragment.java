@@ -41,9 +41,6 @@ public class FavouritesListFragment extends Fragment {
         theAdapter = new MyChatAdapter();
         wordList.setAdapter(theAdapter);
 
-//        delete  = wordLayout.findViewById(R.id.myrsecondecycler);
-
-        wordList.setAdapter(theAdapter);
         wordList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false));
 
         MyOpenHelper opener = new MyOpenHelper( getContext() );

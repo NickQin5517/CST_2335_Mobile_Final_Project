@@ -31,7 +31,6 @@ public class FavouritesList extends AppCompatActivity {
     public void userClickedMessage(WordListFragment.Word word, int position) {
 
         FavouritesWDFragment wdFragment = new FavouritesWDFragment(word, position);
-
         FragmentManager fMgr = getSupportFragmentManager();
         FragmentTransaction tx = fMgr.beginTransaction();
         tx.add(R.id.fragmentWord,wdFragment);
