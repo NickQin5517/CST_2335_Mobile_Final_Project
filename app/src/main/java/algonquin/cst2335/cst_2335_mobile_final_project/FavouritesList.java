@@ -28,7 +28,7 @@ public class FavouritesList extends AppCompatActivity {
         tx.commit();
     }
 
-    public void userClickedMessage(WordListFragment.Word word, int position) {
+    public void userClickedWord(WordListFragment.Word word, int position) {
 
         FavouritesWDFragment wdFragment = new FavouritesWDFragment(word, position);
         FragmentManager fMgr = getSupportFragmentManager();
@@ -39,9 +39,9 @@ public class FavouritesList extends AppCompatActivity {
 
     }
 
-    public void notifyMessageDeleted(WordListFragment.Word chosenWord, int chosenPosition) {
+    public void notifyWordDeleted(WordListFragment.Word chosenWord, int chosenPosition) {
 
-        wordFragment.notifyWordAdded(chosenWord, chosenPosition);
+        wordFragment.notifyWordDeleted(chosenWord, chosenPosition);
         tx.remove(wordFragment);
 
     }

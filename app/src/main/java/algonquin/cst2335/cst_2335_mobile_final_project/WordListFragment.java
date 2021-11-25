@@ -1,15 +1,22 @@
 package algonquin.cst2335.cst_2335_mobile_final_project;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.view.LayoutInflater;
+import android.view.SurfaceControl;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -33,10 +40,19 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
+
+import android.os.PowerManager;
+import android.widget.Toast;
+
+import java.io.OutputStream;
+import java.io.FileOutputStream;
+
 
 public class WordListFragment extends Fragment {
 
@@ -52,6 +68,11 @@ public class WordListFragment extends Fragment {
     SQLiteDatabase db;
     Button searchbtn;
     int count = 1;
+    private ProgressDialog pDialog;
+    ProgressDialog mProgressDialog;
+    String searchWord;
+
+    View wordLayout;
 
 
     private String stringURL;
@@ -60,7 +81,7 @@ public class WordListFragment extends Fragment {
     @Override
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
-        View wordLayout = inflater.inflate(R.layout.search_results_layout, container, false);
+        wordLayout = inflater.inflate(R.layout.search_results_layout, container, false);
 
         wordList = wordLayout.findViewById(R.id.myrecycler);
         wordList.setAdapter(new MyChatAdapter());
@@ -68,29 +89,57 @@ public class WordListFragment extends Fragment {
         String searchedContent = getArguments().getString("searchEdit2");
         EditText searchtext = wordLayout.findViewById(R.id.searchedittwo);
         searchtext.setText(searchedContent);
-        String searchWord = searchtext.getText().toString();
+        searchWord = searchtext.getText().toString();
 
         MyOpenHelper opener = new MyOpenHelper( getContext() );
         db = opener.getWritableDatabase();
 //        Cursor results = db.rawQuery("Select * from " + MyOpenHelper.TABLE_NAME + ";", null);
 
-        getWordFromServer(searchWord);
+//        getWordFromServer(searchWord);
+
+        // declare the dialog as a member field of your activity
+
+// instantiate it within the onCreate method
+        mProgressDialog = new ProgressDialog(getContext());
+        mProgressDialog.setMessage("Downloading data...");
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        mProgressDialog.setCancelable(true);
+
+// execute this when the downloader must be fired
+        final DownloadTask downloadTask = new DownloadTask(getContext());
+        downloadTask.execute(stringURL);
+
+        mProgressDialog.setOnCancelListener(dialog -> {
+            downloadTask.cancel(true); //cancel the task
+        });
 
         searchbtn = wordLayout.findViewById(R.id.searchbutton);
         searchbtn.setOnClickListener(click -> {
 
-            String searchWord2 = searchtext.getText().toString();
-            getWordFromServer(searchWord2);
+            searchWord = searchtext.getText().toString();
+
+            final DownloadTask downloadTask2 = new DownloadTask(getContext());
+
+            downloadTask2.execute(stringURL);
+
+            mProgressDialog.setOnCancelListener(dialog -> {
+                downloadTask.cancel(true); //cancel the task
+            });
+
+//            String searchWord2 = searchtext.getText().toString();
+//            getWordFromServer(searchWord2);
         });
 
         return wordLayout;
     }
 
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void getWordFromServer(String searchtext){
 
-        Executor newThread = Executors.newSingleThreadExecutor();
-        newThread.execute( () -> {
+//        Executor newThread = Executors.newSingleThreadExecutor();
+//        newThread.execute( () -> {
 
             try {
    //             String searchWord = searchtext.getText().toString();
@@ -148,8 +197,77 @@ public class WordListFragment extends Fragment {
             }
 
 
-        });
+//        });
 
+    }
+
+
+    /**
+     * https://stackoverflow.com/questions/3028306/download-a-file-with-android-and-showing-the-progress-in-a-progressdialog
+     * */
+    private class DownloadTask extends AsyncTask<String, Integer, String> {
+
+        private Context context;
+        private PowerManager.WakeLock mWakeLock;
+
+
+        public DownloadTask(Context context) {
+            this.context = context;
+        }
+
+        /**
+         * Before starting background thread
+         * Show Progress Bar Dialog
+         */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // take CPU lock to prevent CPU from going off if the user
+            // presses the power button during download
+            PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+            mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
+                    getClass().getName());
+            mWakeLock.acquire();
+            mProgressDialog.show();
+        }
+
+        /**
+         * Downloading file in background thread
+         */
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        @Override
+        protected String doInBackground(String... sUrl) {
+
+            getWordFromServer(searchWord);
+            return null;
+        }
+
+        /**
+         * Updating progress bar
+         */
+        @Override
+        protected void onProgressUpdate(Integer... progress) {
+            super.onProgressUpdate(progress);
+            // if we get here, length is known, now set indeterminate to false
+            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.setMax(100);
+            mProgressDialog.setProgress(progress[0]);
+        }
+
+        /**
+         * After completing background task
+         * Dismiss the progress dialog
+         **/
+        @Override
+        protected void onPostExecute(String result) {
+            mWakeLock.release();
+            mProgressDialog.dismiss();
+  //          progressBar.setVisibility(View.GONE);
+            if (result != null)
+                Toast.makeText(context,"Download error: "+result, Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(context,"Data downloaded", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void notifyWordAdded(Word chosenWord, int chosenPosition) {
@@ -163,15 +281,16 @@ public class WordListFragment extends Fragment {
                     Word addedWord = resultsWords.get(chosenPosition);
 
                     ContentValues newRow = new ContentValues();
-                    newRow.put(MyOpenHelper.col_word_name, thisWord.getWordName());
-                    newRow.put(MyOpenHelper.col_pronunciation, thisWord.getPronunciationview());
-                    newRow.put(MyOpenHelper.col_definition, thisWord.getWordDefinition());
+                    newRow.put(MyOpenHelper.col_word_name, addedWord.getWordName());
+                    newRow.put(MyOpenHelper.col_pronunciation, addedWord.getPronunciationview());
+                    newRow.put(MyOpenHelper.col_definition, addedWord.getWordDefinition());
+                    System.out.println( addedWord.getWordDefinition());
                     long newId = db.insert(MyOpenHelper.TABLE_NAME, MyOpenHelper.col_word_name, newRow);
-                    thisWord.setId(newId+1);
+                    addedWord.setId(newId+1);
 
                     theAdapter.notifyItemRemoved(chosenPosition);
 
-                    System.out.println(addedWord.getId());
+ //                   System.out.println(addedWord.getId());
 
 //                    db.execSQL(String.format( "Insert into %s values( \"%d\", \"%s\", \"%s\", \"%s\" );",
 //                            MyOpenHelper.TABLE_NAME,addedWord.getId(), addedWord.getWordName(),
@@ -206,7 +325,7 @@ public class WordListFragment extends Fragment {
 
                 SearchResultsPage parentActivity = (SearchResultsPage) getContext();
                 int position = getAbsoluteAdapterPosition();
-                parentActivity.userClickedMessage(resultsWords.get(position), position);
+                parentActivity.userClickedWord(resultsWords.get(position), position);
 
             });
 

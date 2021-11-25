@@ -40,7 +40,7 @@ public class SearchResultsPage extends AppCompatActivity {
 
     }
 
-    public void userClickedMessage(WordListFragment.Word word, int position) {
+    public void userClickedWord(WordListFragment.Word word, int position) {
 
         WordDetailsFragment wdFragment = new WordDetailsFragment(word, position);
 

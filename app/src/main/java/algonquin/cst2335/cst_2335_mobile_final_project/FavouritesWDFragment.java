@@ -43,7 +43,7 @@ public class FavouritesWDFragment extends Fragment {
         Button deleteButton = detailsView.findViewById(R.id.deletebtn);
         deleteButton.setOnClickListener( deleteClicked -> {
             FavouritesList parentActivity = (FavouritesList) getContext();
-            parentActivity.notifyMessageDeleted(chosenWord,chosenPosition);
+            parentActivity.notifyWordDeleted(chosenWord,chosenPosition);
             getParentFragmentManager().beginTransaction().remove(this).commit();
 
         });

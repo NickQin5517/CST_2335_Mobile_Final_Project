@@ -71,7 +71,7 @@ public class FavouritesListFragment extends Fragment {
         return wordLayout;
     }
 
-    public void notifyWordAdded(WordListFragment.Word chosenWord, int chosenPosition) {
+    public void notifyWordDeleted(WordListFragment.Word chosenWord, int chosenPosition) {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
@@ -117,7 +117,8 @@ public class FavouritesListFragment extends Fragment {
 
                 FavouritesList parentActivity = (FavouritesList) getContext();
                 int position = getAbsoluteAdapterPosition();
-                parentActivity.userClickedMessage(favouriteWords.get(position), position);
+
+                parentActivity.userClickedWord(favouriteWords.get(position), position);
 
             });
 
