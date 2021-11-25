@@ -19,4 +19,6 @@
     <string name="author_ning_qin">作者: 秦宁</string>
     <string name="version_1_0">版本: 1.0</string>
     <string name="help">帮助</string>
+    <string name="open" />
+    <string name="navigation_bar">Navigation Bar</string>
 </resources>

@@ -20,4 +20,6 @@
     <string name="author_ning_qin">Author: Ning Qin</string>
     <string name="version_1_0">Version: 1.0</string>
     <string name="help">HELP</string>
+    <string name="open" />
+    <string name="navigation_bar">Navigation Bar</string>
 </resources>
