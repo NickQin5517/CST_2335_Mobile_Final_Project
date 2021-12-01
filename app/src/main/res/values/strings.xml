@@ -18,8 +18,11 @@
     <string name="type_your_word">Type your word</string>
     <string name="favouritesword">FAVOURITESWORD</string>
     <string name="author_ning_qin">Author: Ning Qin</string>
-    <string name="version_1_0">Version: 1.0</string>
+    <string name="version_4_0">Version: 4.0</string>
     <string name="help">HELP</string>
-    <string name="open" />
+    <string name="open" >open</string>
     <string name="navigation_bar">Navigation Bar</string>
+    <string name="version_4_0" >Version: 4.0</string>
+    <string name="version_3_0">Version: 4.0</string>
+    <string name="version_1_0">Version: 1.0</string>
 </resources>
