@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * The class MyOpenHelper established a database called MyWordDatabase and a table called WordsList.
+ */
 public class MyOpenHelper extends SQLiteOpenHelper {
 
     public static final String name = "MyWordDatabase";

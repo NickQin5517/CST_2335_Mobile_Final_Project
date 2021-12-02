@@ -22,6 +22,10 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
+/**
+ * This class FavouritesListFragment extends class Fragment and use a while loop get all data
+ * of favourite words from local database and display it in the WordListFragment page.
+ */
 public class FavouritesListFragment extends Fragment {
 
     ArrayList<WordListFragment.Word> favouriteWords = new ArrayList<>();
@@ -71,6 +75,11 @@ public class FavouritesListFragment extends Fragment {
         return wordLayout;
     }
 
+    /**
+     * This class use AlertDialog delete data from local database and allow user cancel the deleting process through Snackbar
+     * @param chosenWord
+     * @param chosenPosition
+     */
     public void notifyWordDeleted(WordListFragment.Word chosenWord, int chosenPosition) {
 
 
@@ -104,6 +113,9 @@ public class FavouritesListFragment extends Fragment {
 
     }
 
+    /**
+     * this class represents a row called the ViewHolder which extends RecyclerView.ViewHolder.
+     */
     private class MyRowViews extends RecyclerView.ViewHolder{
 
         TextView wordNameText;
@@ -129,6 +141,9 @@ public class FavouritesListFragment extends Fragment {
         }
     }
 
+    /**
+     * This class is responsible for creating a layout for a row, and setting the TextViews in code.
+     */
     class MyChatAdapter extends RecyclerView.Adapter <MyRowViews>{
 
         @Override

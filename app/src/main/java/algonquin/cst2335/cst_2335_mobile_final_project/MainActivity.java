@@ -15,6 +15,11 @@ import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
 
+/**
+ * This class is main class that provide user entries of four applications to choice.
+ *
+ */
+
 public class MainActivity extends AppCompatActivity {
 
 

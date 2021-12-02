@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+/**
+ * This class can display the user's favourite words list
+ */
 public class FavouritesList extends AppCompatActivity {
 
     FavouritesListFragment wordFragment;
@@ -28,6 +31,11 @@ public class FavouritesList extends AppCompatActivity {
         tx.commit();
     }
 
+    /**
+     * This method will be called when a word fragment was clicked
+     * @param word
+     * @param position
+     */
     public void userClickedWord(WordListFragment.Word word, int position) {
 
         FavouritesWDFragment wdFragment = new FavouritesWDFragment(word, position);
@@ -39,6 +47,11 @@ public class FavouritesList extends AppCompatActivity {
 
     }
 
+    /**
+     * The method notifyWordDeleted will be called when user try to delete a word from my favourite words list
+     * @param chosenWord
+     * @param chosenPosition
+     */
     public void notifyWordDeleted(WordListFragment.Word chosenWord, int chosenPosition) {
 
         wordFragment.notifyWordDeleted(chosenWord, chosenPosition);

@@ -21,6 +21,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+/**
+ * This class can allow users input the word that they want to search, click search button
+ * will start next activity page that list all definitions accordingly for the input word.
+ * Also it implemented toolbar and navigation bar at top of screen.
+ */
+
 public class OwlbotActivity extends AppCompatActivity {
 
     @Override

@@ -9,11 +9,20 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+/**
+ * This class extends Fragment implement details of every fragment and use details_layout to display
+ * single WordDetailsFragment object's arrangement
+ */
 public class WordDetailsFragment extends Fragment {
 
    WordListFragment.Word chosenWord;
    int chosenPosition;
 
+   /**
+    * a two parameter constructor of type WordDetailsFragment
+    * @param word
+    * @param position
+    */
    public WordDetailsFragment(WordListFragment.Word word, int position){
       chosenWord = word;
       chosenPosition = position;

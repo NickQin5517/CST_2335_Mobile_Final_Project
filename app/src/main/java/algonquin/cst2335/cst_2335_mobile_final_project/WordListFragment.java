@@ -53,14 +53,15 @@ import android.widget.Toast;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
 
-
+/**
+ * This class will retrieve the specific word from the owlbot server through Executor, and save some data into ArrayList
+ * and local database. Then displays all definitions as fragments in the SearchResultPage.
+ */
 public class WordListFragment extends Fragment {
 
     RecyclerView wordList;
     ArrayList<Word> resultsWords = new ArrayList<>();
-
     MyChatAdapter theAdapter = new MyChatAdapter();
-
     Word thisWord ;
     String definition;
     String word;
@@ -71,10 +72,7 @@ public class WordListFragment extends Fragment {
     private ProgressDialog pDialog;
     ProgressDialog mProgressDialog;
     String searchWord;
-
     View wordLayout;
-
-
     private String stringURL;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -134,7 +132,10 @@ public class WordListFragment extends Fragment {
         return wordLayout;
     }
 
-
+    /**
+     * The getWordFromServer() method will match the word from server and save its data to the ArrayList
+     * @param searchtext
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void getWordFromServer(String searchtext){
 
@@ -203,6 +204,7 @@ public class WordListFragment extends Fragment {
 
 
     /**
+     * implement a processbar to show data was downloading from server
      * https://stackoverflow.com/questions/3028306/download-a-file-with-android-and-showing-the-progress-in-a-progressdialog
      * */
     private class DownloadTask extends AsyncTask<String, Integer, String> {
@@ -270,6 +272,11 @@ public class WordListFragment extends Fragment {
         }
     }
 
+    /**
+     * This class use AlertDialog save data to local database and allow user cancel the saving process through Snackbar
+     * @param chosenWord
+     * @param chosenPosition
+     */
     public void notifyWordAdded(Word chosenWord, int chosenPosition) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
@@ -311,7 +318,9 @@ public class WordListFragment extends Fragment {
 
     }
 
-
+    /**
+     *this class represents a row called the ViewHolder which extends RecyclerView.ViewHolder.
+     */
     private class MyRowViews extends RecyclerView.ViewHolder{
 
         TextView wordNameText;
@@ -336,6 +345,9 @@ public class WordListFragment extends Fragment {
         }
     }
 
+    /**
+     * This class is responsible for creating a layout for a row, and setting the TextViews in code.
+     */
      class MyChatAdapter extends RecyclerView.Adapter <MyRowViews>{
 
         @Override
@@ -363,6 +375,10 @@ public class WordListFragment extends Fragment {
 
     }
 
+    /**
+     * The Class Word is responsible for create Word object that have three fields which are wordName,
+     * wordDefinition, and pronunciationview.
+     */
      static class Word{
         String wordName;
         String wordDefinition;

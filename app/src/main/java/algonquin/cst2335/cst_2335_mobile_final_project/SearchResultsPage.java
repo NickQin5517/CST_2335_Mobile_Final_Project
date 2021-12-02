@@ -10,6 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+/**
+ * This class will use a new WordListFragment object to display all the search results and other factors in the empty_layout.
+ */
+
+
 public class SearchResultsPage extends AppCompatActivity {
 
     WordListFragment wordFragment;
@@ -40,6 +45,12 @@ public class SearchResultsPage extends AppCompatActivity {
 
     }
 
+    /**
+     * This method will be called after one fragment is clicked and connect the WordDetailsFragment class
+     * @param word
+     * @param position
+     */
+
     public void userClickedWord(WordListFragment.Word word, int position) {
 
         WordDetailsFragment wdFragment = new WordDetailsFragment(word, position);
@@ -51,6 +62,12 @@ public class SearchResultsPage extends AppCompatActivity {
         tx.commit();
 
     }
+
+    /**
+     * This method will be called when user added the chosen word to favourite list
+     * @param chosenWord
+     * @param chosenPosition
+     */
 
     public void notifyWordAdded(WordListFragment.Word chosenWord, int chosenPosition) {
 

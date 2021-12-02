@@ -8,12 +8,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-
+/**
+ * This class extends Fragment implement details of every fragment and use favouritesdetail_layout to display
+ * single FavouritesWDFragment object's arrangement
+ */
 public class FavouritesWDFragment extends Fragment {
 
     WordListFragment.Word chosenWord;
     int chosenPosition;
-
+    /**
+     * a two parameter constructor of type FavouritesWDFragment
+     * @param word
+     * @param position
+     */
     public FavouritesWDFragment(WordListFragment.Word word, int position){
         chosenWord = word;
         chosenPosition = position;
