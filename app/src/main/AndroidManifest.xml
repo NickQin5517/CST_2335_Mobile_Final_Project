@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="algonquin.cst2335.cst_2335_mobile_final_project">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,6 +25,8 @@
         <activity android:name=".OwlbotActivity" android:exported="false" />
         <activity android:name=".CovidActivity" android:exported="false" />
         <activity android:name=".CarbonActivity" android:exported="false" />
+        <activity android:name=".PhotoDetailActivity" android:exported="false" />
+        <activity android:name=".SaveListActivity" android:exported="false" />
     </application>
 
 </manifest>
