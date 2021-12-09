@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+//import androidx.annotation.RequiresApi;
+//import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -75,7 +77,7 @@ public class WordListFragment extends Fragment {
     View wordLayout;
     private String stringURL;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+//    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
@@ -116,17 +118,17 @@ public class WordListFragment extends Fragment {
         searchbtn.setOnClickListener(click -> {
 
             searchWord = searchtext.getText().toString();
-
+/*
             final DownloadTask downloadTask2 = new DownloadTask(getContext());
 
             downloadTask2.execute(stringURL);
-
+*/
             mProgressDialog.setOnCancelListener(dialog -> {
                 downloadTask.cancel(true); //cancel the task
             });
 
-//            String searchWord2 = searchtext.getText().toString();
-//            getWordFromServer(searchWord2);
+            String searchWord2 = searchtext.getText().toString();
+            getWordFromServer(searchWord2);
         });
 
         return wordLayout;
@@ -136,16 +138,17 @@ public class WordListFragment extends Fragment {
      * The getWordFromServer() method will match the word from server and save its data to the ArrayList
      * @param searchtext
      */
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void getWordFromServer(String searchtext){
 
-//        Executor newThread = Executors.newSingleThreadExecutor();
-//        newThread.execute( () -> {
+        Executor newThread = Executors.newSingleThreadExecutor();
+        newThread.execute( () -> {
 
             try {
    //             String searchWord = searchtext.getText().toString();
-
-                stringURL = "https://owlbot.info/api/v4/dictionary/"
+//"https://torunski.ca/tempPexels.json?" //
+                stringURL =  "https://owlbot.info/api/v4/dictionary/"
                         + URLEncoder.encode(searchtext, "UTF-8");
 
                 URL url = new URL(stringURL);
@@ -198,7 +201,7 @@ public class WordListFragment extends Fragment {
             }
 
 
-//        });
+        });
 
     }
 
@@ -236,6 +239,7 @@ public class WordListFragment extends Fragment {
         /**
          * Downloading file in background thread
          */
+
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         protected String doInBackground(String... sUrl) {
