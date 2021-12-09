@@ -7,4 +7,10 @@
         android:icon="@drawable/owlbot"
         android:title="@string/owlbot_dictionary"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/pexelIcon"
+        android:icon="@drawable/car_pexels"
+        android:title="@string/Pexels"
+        app:showAsAction="always" />
 </menu>

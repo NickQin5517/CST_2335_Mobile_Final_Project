@@ -26,13 +26,13 @@
     <string name="version_3_0">Version: 4.0</string>
     <string name="version_1_0">Version: 1.0</string>
     <string name="Search">Search</string>
-    <string name="open">Open</string>
-    <string name="close">Close</string>
+
+
     <string name="hint">Please enter the content</string>
     <string name="OwlbotDicionary">Owlbot Dicionary</string>
     <string name="Pexels">Pexels</string>
     <string name="CovidTracker">Covid 19 Tracker</string>
-    <string name="help">help</string>
+
     <string name="SaveList">SaveList</string>
     <string name="author_and_version">Pexels by Yingying Zhao \nVersion 1.0</string>
 

@@ -47,6 +47,12 @@ public class OwlbotActivity extends AppCompatActivity {
                 startActivity( new Intent( OwlbotActivity.this, OwlbotActivity.class));
 
                 break;
+
+            case R.id.pexelIcon:
+
+                startActivity( new Intent( OwlbotActivity.this, PexelsActivity.class));
+
+                break;
         }
 
 
