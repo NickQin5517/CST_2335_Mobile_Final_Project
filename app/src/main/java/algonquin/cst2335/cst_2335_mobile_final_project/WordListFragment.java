@@ -3,20 +3,16 @@ package algonquin.cst2335.cst_2335_mobile_final_project;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.view.LayoutInflater;
-import android.view.SurfaceControl;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 //import androidx.annotation.RequiresApi;
@@ -42,18 +38,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
-import android.os.PowerManager;
 import android.widget.Toast;
-
-import java.io.OutputStream;
-import java.io.FileOutputStream;
 
 /**
  * This class will retrieve the specific word from the owlbot server through Executor, and save some data into ArrayList
@@ -91,7 +80,7 @@ public class WordListFragment extends Fragment {
         searchtext.setText(searchedContent);
         searchWord = searchtext.getText().toString();
 
-        MyOpenHelper opener = new MyOpenHelper( getContext() );
+        MyOpenHelperOfOwlBot opener = new MyOpenHelperOfOwlBot( getContext() );
         db = opener.getWritableDatabase();
 //        Cursor results = db.rawQuery("Select * from " + MyOpenHelper.TABLE_NAME + ";", null);
 
@@ -292,11 +281,11 @@ public class WordListFragment extends Fragment {
                     Word addedWord = resultsWords.get(chosenPosition);
 
                     ContentValues newRow = new ContentValues();
-                    newRow.put(MyOpenHelper.col_word_name, addedWord.getWordName());
-                    newRow.put(MyOpenHelper.col_pronunciation, addedWord.getPronunciationview());
-                    newRow.put(MyOpenHelper.col_definition, addedWord.getWordDefinition());
+                    newRow.put(MyOpenHelperOfOwlBot.col_word_name, addedWord.getWordName());
+                    newRow.put(MyOpenHelperOfOwlBot.col_pronunciation, addedWord.getPronunciationview());
+                    newRow.put(MyOpenHelperOfOwlBot.col_definition, addedWord.getWordDefinition());
                     System.out.println( addedWord.getWordDefinition());
-                    long newId = db.insert(MyOpenHelper.TABLE_NAME, MyOpenHelper.col_word_name, newRow);
+                    long newId = db.insert(MyOpenHelperOfOwlBot.TABLE_NAME, MyOpenHelperOfOwlBot.col_word_name, newRow);
                     addedWord.setId(newId+1);
 
                     theAdapter.notifyItemRemoved(chosenPosition);
@@ -313,7 +302,7 @@ public class WordListFragment extends Fragment {
 
                                 theAdapter.notifyItemRemoved(chosenPosition);
                                 System.out.println(addedWord.getId());
-                                db.delete(MyOpenHelper.TABLE_NAME, "_id=?", new String[]{Long.toString(addedWord.getId()-1)});
+                                db.delete(MyOpenHelperOfOwlBot.TABLE_NAME, "_id=?", new String[]{Long.toString(addedWord.getId()-1)});
 
                             }).show();
 

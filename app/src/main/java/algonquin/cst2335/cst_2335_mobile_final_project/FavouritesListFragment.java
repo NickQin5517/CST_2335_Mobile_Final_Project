@@ -1,7 +1,6 @@
 package algonquin.cst2335.cst_2335_mobile_final_project;
 
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,14 +44,14 @@ public class FavouritesListFragment extends Fragment {
 
         wordList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false));
 
-        MyOpenHelper opener = new MyOpenHelper( getContext() );
+        MyOpenHelperOfOwlBot opener = new MyOpenHelperOfOwlBot( getContext() );
         db = opener.getWritableDatabase();
-        Cursor results = db.rawQuery("Select * from " + MyOpenHelper.TABLE_NAME + ";", null);
+        Cursor results = db.rawQuery("Select * from " + MyOpenHelperOfOwlBot.TABLE_NAME + ";", null);
 
         int _idCol = results.getColumnIndex("_id");
-        int wordCol = results.getColumnIndex( MyOpenHelper.col_word_name);
-        int pronunciationCol = results.getColumnIndex( MyOpenHelper.col_pronunciation);
-        int definitionCol = results.getColumnIndex( MyOpenHelper.col_definition);
+        int wordCol = results.getColumnIndex( MyOpenHelperOfOwlBot.col_word_name);
+        int pronunciationCol = results.getColumnIndex( MyOpenHelperOfOwlBot.col_pronunciation);
+        int definitionCol = results.getColumnIndex( MyOpenHelperOfOwlBot.col_definition);
 
         while(results.moveToNext()) {
 
@@ -93,7 +90,7 @@ public class FavouritesListFragment extends Fragment {
                     favouriteWords.remove(chosenPosition);
                     theAdapter.notifyItemRemoved(chosenPosition);
 
-                    db.delete(MyOpenHelper.TABLE_NAME, "_id=?", new String[]{Long.toString(removedWord.getId())});
+                    db.delete(MyOpenHelperOfOwlBot.TABLE_NAME, "_id=?", new String[]{Long.toString(removedWord.getId())});
 
                     Snackbar.make(wordList, "You deleted word " + chosenWord.getWordName(), Snackbar.LENGTH_LONG)
                             .setAction("Undo", clk -> {
@@ -101,7 +98,7 @@ public class FavouritesListFragment extends Fragment {
                                 theAdapter.notifyItemRemoved(chosenPosition);
 
                                 db.execSQL(String.format( "Insert into %s values( \"%d\", \"%s\", \"%s\", \"%s\" );",
-                                        MyOpenHelper.TABLE_NAME,removedWord.getId(), removedWord.getWordName(),
+                                        MyOpenHelperOfOwlBot.TABLE_NAME,removedWord.getId(), removedWord.getWordName(),
                                         removedWord.getPronunciationview(), removedWord.getWordDefinition()));
 
                             }).show();

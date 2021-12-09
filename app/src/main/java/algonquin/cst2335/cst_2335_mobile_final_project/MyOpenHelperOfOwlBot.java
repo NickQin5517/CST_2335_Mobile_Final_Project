@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * The class MyOpenHelper established a database called MyWordDatabase and a table called WordsList.
  */
-public class MyOpenHelper extends SQLiteOpenHelper {
+public class MyOpenHelperOfOwlBot extends SQLiteOpenHelper {
 
     public static final String name = "MyWordDatabase";
     public static final int version = 1;
@@ -20,7 +20,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
 
 
 
-    public MyOpenHelper(Context context) {
+    public MyOpenHelperOfOwlBot(Context context) {
         super(context, name, null, version);
     }
 
