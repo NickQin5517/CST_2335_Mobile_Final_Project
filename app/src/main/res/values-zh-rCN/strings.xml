@@ -11,4 +11,6 @@
     <string name="SaveList">保存列表</string>
     <string name="help">帮助</string>
     <string name="author_and_version">App作者 招颖荧 \n 版本 1.0</string>
+    <string name="des">通过输入文本得到相应的图像 作者:招颖荧,应用名字:像素</string>
+    <string name="tips">提示</string>
 </resources>

@@ -190,9 +190,9 @@ public class PexelsActivity extends AppCompatActivity {
 
             case R.id.help_pexels:
                 new androidx.appcompat.app.AlertDialog.Builder(this)
-                        .setTitle("Tips")
-                        .setMessage("Get to the corresponding image through the input text" +
-                                "Author: Yingying Zhao , App name: Pexels")
+
+                        .setTitle(getString(R.string.tips))
+                        .setMessage(getString(R.string.des))
                         .setNeutralButton("Got it!", (dialog, cl) -> {
                         })
                         .create()

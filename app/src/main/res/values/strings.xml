@@ -10,6 +10,8 @@
     <string name="help">help</string>
     <string name="SaveList">SaveList</string>
     <string name="author_and_version">Pexels by Yingying Zhao \nVersion 1.0</string>
+    <string name="des">Get to the corresponding image through the input text Author: Yingying Zhao , App name: Pexels</string>
+    <string name="tips">tips</string>
 
 
 </resources>

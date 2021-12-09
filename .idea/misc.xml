@@ -4,6 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/qinni/AndroidStudioProjects/CST_2335_Mobile_Final_Project/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/activity_pexels.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/activity_photo.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/activity_save_list.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/details_layout.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/photo.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/popout_header_car.xml" value="0.22327898550724637" />
       </map>
     </option>
   </component>
