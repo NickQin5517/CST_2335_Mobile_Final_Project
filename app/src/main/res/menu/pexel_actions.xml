@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/car_to_pexels"
+        android:icon="@drawable/car_pexels"
+        android:title="@string/Pexels"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/car_to_owlbot"
+        android:icon="@drawable/car_owl"
+        android:title="@string/OwlbotDicionary"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/save"
+        android:icon="@drawable/save"
+        android:title="@string/SaveList"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/help_pexels"
+        android:icon="@drawable/pexels_help"
+        android:title="@string/help"
+        app:showAsAction="always" />
+
+</menu>

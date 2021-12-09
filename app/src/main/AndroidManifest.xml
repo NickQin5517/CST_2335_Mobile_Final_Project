@@ -28,6 +28,8 @@
         <activity android:name=".CarbonActivity" android:exported="false" />
         <activity android:name=".SearchResultsPage" android:exported="false" />
         <activity android:name=".FavouritesList" android:exported="false" />
+        <activity android:name=".PhotoDetailActivity" android:exported="false" />
+        <activity android:name=".SaveListActivity" android:exported="false" />
     </application>
 
 </manifest>
