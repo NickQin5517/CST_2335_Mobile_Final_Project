@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CST_2335_Mobile_Final_Project</string>
-    <string name="search">搜索</string>
-    <string name="searchbar">搜索栏</string>
-    <string name="wordnameview">单词名称</string>
-    <string name="worddefinitionview">单词定义</string>
-    <string name="pronunciationview">单词发音</string>
-    <string name="delete">删除</string>
+    <string name="app_name">我的期末项目</string>
+    <string name="Search">搜索</string>
+    <string name="open">打开</string>
     <string name="close">关闭</string>
     <string name="pronunciation_goes_here">单词发音</string>
     <string name="definition_goes_here">单词定义</string>
@@ -29,6 +25,8 @@
     <string name="Pexels">图片</string>
     <string name="CovidTracker">冠状病毒追踪器</string>
     <string name="SaveList">保存列表</string>
+    <string name="help">帮助</string>
     <string name="author_and_version">App作者 招颖荧 \n 版本 1.0</string>
-
+    <string name="des">通过输入文本得到相应的图像 作者:招颖荧,应用名字:像素</string>
+    <string name="tips">提示</string>
 </resources>
