@@ -33,7 +33,7 @@ public class WordDetailsFragment extends Fragment {
    @Override
    public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
-      View detailsView = inflater.inflate(R.layout.details_layout, container, false);
+      View detailsView = inflater.inflate(R.layout.details_layout_owlbot, container, false);
 
       TextView wordNameView = detailsView.findViewById(R.id.detailsWordName);
       TextView wordProView = detailsView.findViewById(R.id.detailsWordPro);
