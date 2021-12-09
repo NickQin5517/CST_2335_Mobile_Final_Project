@@ -2,7 +2,7 @@
     <string name="app_name">CST_2335_Mobile_Final_Project</string>
 
 
-    <string name="searchbar" />
+    <string name="searchbar" >Search</string>
     <string name="wordnameview" />
     <string name="worddefinitionview" />
     <string name="pronunciationview" />

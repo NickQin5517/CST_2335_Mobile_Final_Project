@@ -29,4 +29,10 @@
     <string name="author_and_version">App作者 招颖荧 \n 版本 1.0</string>
     <string name="des">通过输入文本得到相应的图像 作者:招颖荧,应用名字:像素</string>
     <string name="tips">提示</string>
+    <string name="searchbar">搜索</string>
+    <string name="delete">删除</string>
+    <string name="search">搜索</string>
+    <string name="wordnameview">单词</string>
+    <string name="worddefinitionview">定义</string>
+    <string name="pronunciationview">发音</string>
 </resources>
